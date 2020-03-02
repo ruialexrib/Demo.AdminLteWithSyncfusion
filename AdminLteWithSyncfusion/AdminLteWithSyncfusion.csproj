@@ -136,6 +136,7 @@
     <Content Include="Web.config" />
     <Content Include="Scripts\ej2\ej2.min.js.map" />
     <Content Include="Scripts\ej2\tsconfig.json" />
+    <None Include="Properties\PublishProfiles\AdminLteWithSyncfusion20200302102055 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
