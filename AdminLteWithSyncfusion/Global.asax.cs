@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,7 +17,12 @@ namespace AdminLteWithSyncfusion
 
         protected void Application_Start()
         {
+            //Register Syncfusion license
+            string license = File.ReadAllText(Server.MapPath(@"~/App_Data/licence.txt"));
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(license);
+
             Log.Info("Starting up...");
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
