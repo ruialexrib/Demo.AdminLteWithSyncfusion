@@ -29,7 +29,6 @@ namespace AdminLteWithSyncfusion.Controllers
         {
             IEnumerable DataSource = GridModelService.Get();
             DataOperations operation = new DataOperations();
-            int count = DataSource.Cast<GridModel>().Count();
 
             if (dm.Search != null && dm.Search.Count > 0)
             {
@@ -45,6 +44,8 @@ namespace AdminLteWithSyncfusion.Controllers
             {
                 DataSource = operation.PerformFiltering(DataSource, dm.Where, dm.Where[0].Operator);
             }
+
+            int count = DataSource.Cast<GridModel>().Count();
 
             if (dm.Skip != 0)
             {
