@@ -18,7 +18,7 @@ namespace AdminLteWithSyncfusion
         protected void Application_Start()
         {
             //Register Syncfusion license
-            string license = File.ReadAllText(Server.MapPath(@"~/App_Data/licence.txt"));
+            string license = File.ReadAllText(Server.MapPath(@"~/App_Data/license.txt"));
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(license);
 
             Log.Info("Starting up...");
