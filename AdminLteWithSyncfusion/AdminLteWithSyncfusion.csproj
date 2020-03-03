@@ -121,9 +121,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\license.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="App_Data\license.txt" />
     <Content Include="Content\ej2\bootstrap.css" />
     <Content Include="Content\ej2\bootstrap4.css" />
     <Content Include="Content\ej2\compatibility\bootstrap.css" />
