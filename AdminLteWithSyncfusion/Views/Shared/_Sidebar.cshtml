@@ -16,12 +16,18 @@
         @* BEGIN Menu *@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">HEADER</li>
+
             <li class="@Url.IsLinkActive("Index", "Home")">
                 <a href="@Url.Action("Index", "Home")"><i class="fa fa-link"></i> <span>Home</span></a>
             </li>
             <li class="@Url.IsLinkActive("AnotherLink", "Home")">
                 <a href="@Url.Action("AnotherLink", "Home")"><i class="fa fa-link"></i> <span>Another Link</span></a>
             </li>
+
+            <li class="@Url.IsLinkActive("Index", "Grid")">
+                <a href="@Url.Action("Index", "Grid")"><i class="fa fa-table"></i> <span>Grid</span></a>
+            </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-link"></i> <span>Multilevel</span>

@@ -138,6 +138,7 @@
     <Content Include="Scripts\ej2\tsconfig.json" />
     <None Include="Properties\PublishProfiles\AdminLteWithSyncfusion20200302102055 - Web Deploy.pubxml" />
     <Content Include="Scripts\ej2\ej2.min.js.map" />
+    <Content Include="Views\Grid\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -146,6 +147,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\GridController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

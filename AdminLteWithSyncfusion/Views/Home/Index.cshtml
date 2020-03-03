@@ -103,39 +103,6 @@
 </div>
 <div class="row">
 
-    <div class="col-xs-12 col-md-12">
-        <div class="box box-info">
-            <div class="box-header">
-                <h3 class="box-title">Syncfusion Grid Example</h3>
-            </div>
-            <div class="box-body">
-
-                @(
-                    Html.EJS().Grid("Grid")
-                    .DataSource((IEnumerable<object>)ViewBag.Models)
-                    .EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); })
-                    .AllowSorting()
-                    .AllowReordering()
-                    .ShowColumnChooser(true)
-                    .AllowFiltering(true)
-                    .FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); })
-                    .AllowGrouping(true)
-                    .AllowPaging()
-                    .PageSettings(page => page.PageSize(10)
-                    .PageCount(10))
-                    .Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search" })
-                    .Columns(col =>
-                    {
-                        col.Field("Id").HeaderText("ID").Width("50").IsPrimaryKey(true).Add();
-                        col.Field("Name").HeaderText("NAME").Width("150").Add();
-                        col.Field("Address").HeaderText("ADDRESS").Width("130").Add();
-                    }).Render()
-                )
-            </div>
-        </div>
-    </div>
-
-
     <div class="col-xs-12 col-md-6">
         <div class="box box-default">
             <div class="box-header">

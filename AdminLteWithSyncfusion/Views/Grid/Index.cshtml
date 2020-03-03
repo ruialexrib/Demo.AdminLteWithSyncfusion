@@ -1,0 +1,47 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Index";
+    ViewBag.Description = "Grid Demo";
+}
+
+<div class="row">
+
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">Grid Demo</h3>
+            </div>
+            <div class="box-body">
+
+                @(
+                Html.EJS().Grid("Grid")
+                .DataSource((IEnumerable<object>)ViewBag.Models)
+                .EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog); })
+                .AllowSorting()
+                .AllowReordering()
+                .ShowColumnChooser(true)
+                .AllowFiltering(true)
+                .FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); })
+                .AllowGrouping(true)
+                .AllowPaging()
+                .PageSettings(page => page.PageSize(5).PageSizes(true)
+                .PageCount(5))
+                .Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search" })
+                .Columns(col =>
+                {
+                    col.Field("Id").HeaderText("ID").Width("50").IsPrimaryKey(true).Add();
+                    col.Field("Name").HeaderText("NAME").Width("250").Add();
+                    col.Field("Address").HeaderText("ADDRESS").Width("300").Add();
+                    col.Field("CountryId").HeaderText("COUNTRY").ForeignKeyField("Id").ForeignKeyValue("Name").DataSource(ViewBag.Countries).Width("200").Add();
+                    col.Field("Email").HeaderText("EMAIL").Width("200").Add();
+                    col.Field("BirthDate").HeaderText("BIRTHDATE").Add();
+                    col.Field("IPAddress").HeaderText("IP ADDRESS").Add();
+                }).Render()
+                )
+
+            </div>
+        </div>
+    </div>
+
+</div>
