@@ -12,31 +12,71 @@
             </div>
             <div class="box-body">
 
+                @{
+                    List<object> toolbarItems = new List<object>();
+                    toolbarItems.Add("Add");
+                    toolbarItems.Add("Edit");
+                    toolbarItems.Add("Delete");
+                    toolbarItems.Add("Update");
+                    toolbarItems.Add("Cancel");
+                    toolbarItems.Add(new { text = "Refresh", tooltipText = "Refresh", id = "Refresh", prefixIcon = "e-refresh" });
+                }
+
+
                 @(
-                Html.EJS().Grid("Grid")
-                .DataSource((IEnumerable<object>)ViewBag.Models)
-                .EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog); })
-                .AllowSorting()
-                .AllowReordering()
-                .ShowColumnChooser(true)
-                .AllowFiltering(true)
-                .FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); })
-                .AllowGrouping(true)
-                .AllowPaging()
-                .PageSettings(page => page.PageSize(5).PageSizes(true)
-                .PageCount(5))
-                .Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search" })
-                .Columns(col =>
-                {
-                    col.Field("Id").HeaderText("ID").Width("50").IsPrimaryKey(true).Add();
-                    col.Field("Name").HeaderText("NAME").Width("250").Add();
-                    col.Field("Address").HeaderText("ADDRESS").Width("300").Add();
-                    col.Field("CountryId").HeaderText("COUNTRY").ForeignKeyField("Id").ForeignKeyValue("Name").DataSource(ViewBag.Countries).Width("200").Add();
-                    col.Field("Email").HeaderText("EMAIL").Width("200").Add();
-                    col.Field("BirthDate").HeaderText("BIRTHDATE").Add();
-                    col.Field("IPAddress").HeaderText("IP ADDRESS").Add();
-                }).Render()
+                    Html.EJS().Grid("Grid")
+                    .DataSource(dataManager => { dataManager.Url("/Grid/UrlDatasource").InsertUrl("/Grid/Insert").UpdateUrl("/Grid/Update").RemoveUrl("/Grid/Delete").Adaptor("UrlAdaptor"); })
+                    .EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog).ShowDeleteConfirmDialog(true); })
+                    .AllowSorting()
+                    .AllowReordering()
+                    .ShowColumnChooser(true)
+                    .ShowColumnMenu(true)
+                    .AllowFiltering(true)
+                    .FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); })
+                    .AllowGrouping(true)
+                    .AllowPaging()
+                    .PageSettings(page => page.PageSize(5).PageSizes(true)
+                    .PageCount(5))
+                    .ToolbarClick("toolbarClick")
+                    .Toolbar(toolbarItems)
+                    .Columns(col =>
+                    {
+                        col.Field("Id").HeaderText("ID").Width("50").IsIdentity(true).IsPrimaryKey(true).DefaultValue(0).Add();
+                        col.Field("Name").HeaderText("NAME").Width("250").Add();
+                        col.Field("Address").HeaderText("ADDRESS").Width("300").Add();
+                        col.Field("CountryId").HeaderText("COUNTRY").ForeignKeyField("Id").ForeignKeyValue("Name").DataSource(ViewBag.Countries).Width("200").Add();
+                        col.Field("Email").HeaderText("EMAIL").Width("200").Add();
+                        col.Field("BirthDate").HeaderText("BIRTHDATE").Add();
+                        col.Field("IPAddress").HeaderText("IP ADDRESS").Add();
+                    })
+                    .ActionComplete("actionComplete")
+                    .Render()
                 )
+
+                <script>
+                    function toolbarClick(args) {
+                        if (args.item.id === 'Refresh') {
+                            var grid = document.getElementById("Grid").ej2_instances[0];
+                            grid.refresh();
+                        }
+                    }
+                </script>
+                <style>
+                    .e-refresh::before {
+                        content: '\e99d';
+                    }
+                </style>
+
+                <script>
+                    function actionComplete(args) {
+                        if (args.requestType === 'beginEdit') {
+
+                        }
+                        if (args.requestType === 'add') {
+ 
+                        }
+                    }
+                </script>
 
             </div>
         </div>
