@@ -1,0 +1,36 @@
+﻿<div id="modal_partial_cshtml">
+
+    @*Header*@
+    <div class="modal-header">
+        <h3 class="modal-title">
+            Isto é um teste de PartialView
+        </h3>
+    </div>
+
+
+    @*Body*@
+    <div id="" class="modal-body">
+
+        <div class="jumbotron">
+            <h1>ASP.NET</h1>
+            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        </div>
+
+    </div>
+
+
+    @*Footer*@
+    <div class="modal-footer">
+
+        <div class="pull-left">
+            <a href="#" class="btn btn-danger btn-close">
+                Close Modal&nbsp;<i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+            <a href="@(Url.Action("Partial2", "Modal"))" id="btn-open" class="btn btn-primary">
+                Open Modal&nbsp;&nbsp;<i class="fa fa-external-link"></i>
+            </a>
+        </div>
+
+    </div>
+
+</div>

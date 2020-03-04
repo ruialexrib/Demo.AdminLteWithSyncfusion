@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Modal";
+    ViewBag.Description = "Modal Demo";
+}
+
+<div id="modal_index_cshtml">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">Modal Demo</h3>
+                </div>
+                <div class="box-body">
+                    <a href="@(Url.Action("Partial", "Modal"))" id="btn-open" class="btn btn-primary">
+                        Open Modal&nbsp;&nbsp;<i class="fa fa-external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script type="text/javascript">
+
+        function open(url) {
+            app.modal.show(url);
+        }
+
+        $(cfg.modal.container).on("click", ".btn-close", function () {
+            app.modal.close();
+        });
+
+        $("#modal_index_cshtml").on("click", "#btn-open", function (e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            open(url);
+        });
+
+        $(cfg.modal.container).on("click", "#btn-open", function (e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            open(url);
+        });
+
+    </script>
+
+}

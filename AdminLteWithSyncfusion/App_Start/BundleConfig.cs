@@ -14,7 +14,12 @@ namespace AdminLteWithSyncfusion.App_Start
                 .Include("~/Content/css/font-awesome.min.css", new CssRewriteUrlTransformAbsolute())
                 .Include("~/Content/css/icheck/blue.min.css", new CssRewriteUrlTransformAbsolute())
                 .Include("~/Content/css/AdminLTE.css", new CssRewriteUrlTransformAbsolute())
-                .Include("~/Content/css/skins/skin-blue.css"));
+                .Include("~/Content/css/skins/skin-blue.css")
+                );
+
+            bundles.Add(new StyleBundle("~/Bundles/css/ej2")
+                .Include("~/Content/ej2/material.css")
+                );
 
             bundles.Add(new ScriptBundle("~/Bundles/js")
                 .Include("~/Content/js/plugins/jquery/jquery-3.3.1.js")
@@ -28,7 +33,17 @@ namespace AdminLteWithSyncfusion.App_Start
                 .Include("~/Content/js/plugins/validator/validator.js")
                 .Include("~/Content/js/plugins/inputmask/jquery.inputmask.bundle.js")
                 .Include("~/Content/js/adminlte.js")
-                .Include("~/Content/js/init.js"));
+                .Include("~/Content/js/init.js")
+                );
+
+            bundles.Add(new ScriptBundle("~/Bundles/js/ej2")
+                .Include("~/Scripts/ej2/ej2.min.js")
+                );
+
+            bundles.Add(new ScriptBundle("~/Bundles/js/app")
+                .Include("~/Scripts/app/app.js")
+                .Include("~/Scripts/app/cfg.js")
+                );
 
 #if DEBUG
             BundleTable.EnableOptimizations = false;
