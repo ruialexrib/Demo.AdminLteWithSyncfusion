@@ -144,6 +144,7 @@
     <Content Include="Views\Modal\Index.cshtml" />
     <Content Include="Views\Modal\_Partial.cshtml" />
     <Content Include="Views\Modal\_Partial2.cshtml" />
+    <Content Include="Views\Shared\_Footerbar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
