@@ -1,7 +1,6 @@
 ﻿using AdminLteWithSyncfusion.Controllers.Models;
 using AdminLteWithSyncfusion.Services;
 using Syncfusion.EJ2.Base;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +8,13 @@ using System.Web.Mvc;
 
 namespace AdminLteWithSyncfusion.Controllers
 {
+    /// <summary></summary>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     public class GridController : Controller
     {
         // GET: Grid
+        /// <summary>Indexes this instance.</summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             var countries = new List<GridCountryModel>();
@@ -25,6 +28,11 @@ namespace AdminLteWithSyncfusion.Controllers
             return View();
         }
 
+        /// <summary>
+        /// URLs the datasource.
+        /// </summary>
+        /// <param name="dm">The dm.</param>
+        /// <returns></returns>
         public ActionResult UrlDatasource(DataManagerRequest dm)
         {
             IEnumerable DataSource = GridModelService.Get();
@@ -58,6 +66,11 @@ namespace AdminLteWithSyncfusion.Controllers
             return dm.RequiresCounts ? Json(new { result = DataSource, count = count }) : Json(DataSource);
         }
 
+        /// <summary>
+        /// Inserts the specified object.
+        /// </summary>
+        /// <param name="Object">The object.</param>
+        /// <returns></returns>
         public ActionResult Insert(CRUDModel<GridModel> Object)
         {
             var record = Object.Value;
@@ -65,6 +78,9 @@ namespace AdminLteWithSyncfusion.Controllers
             return Json(record);
         }
 
+        /// <summary>Updates the specified object.</summary>
+        /// <param name="Object">The object.</param>
+        /// <returns></returns>
         public ActionResult Update(CRUDModel<GridModel> Object)
         {
             var record = Object.Value;
@@ -72,6 +88,11 @@ namespace AdminLteWithSyncfusion.Controllers
             return Json(record);
         }
 
+        /// <summary>
+        /// Deletes the specified object.
+        /// </summary>
+        /// <param name="Object">The object.</param>
+        /// <returns></returns>
         public ActionResult Delete(CRUDModel<GridModel> Object)
         {
             int id = (int)Object.Key;

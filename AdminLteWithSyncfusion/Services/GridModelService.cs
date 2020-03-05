@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace AdminLteWithSyncfusion.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class GridModelService
     {
         private static List<GridModel> _db = new List<GridModel>() { new GridModel
@@ -68,12 +71,21 @@ namespace AdminLteWithSyncfusion.Services
                 IPAddress = "22.177.222.227"
             }
         };
-        
+
+        /// <summary>
+        /// Gets this instance.
+        /// </summary>
+        /// <returns></returns>
         public static List<GridModel> Get()
         {
             return _db;
         }
 
+        /// <summary>
+        /// Adds the specified gridmodel.
+        /// </summary>
+        /// <param name="gridmodel">The gridmodel.</param>
+        /// <returns></returns>
         public static GridModel Add(GridModel gridmodel)
         {
             var count = _db.Count;
@@ -82,6 +94,11 @@ namespace AdminLteWithSyncfusion.Services
             return gridmodel;
         }
 
+        /// <summary>
+        /// Modifies the specified gridmodel.
+        /// </summary>
+        /// <param name="gridmodel">The gridmodel.</param>
+        /// <returns></returns>
         public static GridModel Modify(GridModel gridmodel)
         {
             var record = _db.Where(x => x.Id == gridmodel.Id).FirstOrDefault();
@@ -90,6 +107,11 @@ namespace AdminLteWithSyncfusion.Services
             return gridmodel;
         }
 
+        /// <summary>
+        /// Removes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public static GridModel Remove(int id)
         {
             var record = _db.Where(x => x.Id == id).FirstOrDefault();
