@@ -77,5 +77,55 @@
     <!-- Syncfusion Essential JS 2 ScriptManager -->
     @Html.EJS().ScriptManager()
 
+
+    <script>
+        $("#sidebar-form").on("keypress", "#search-q", function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                var searchText = $(this).val().toLowerCase();
+                findOptionsMenu(searchText);
+            }
+        });
+
+        function findOptionsMenu(searchText) {
+
+            if (searchText.length > 0) {
+                $("#sidebar-menu .treeview .treeview-menu").each(function () {
+                    $(this).css('display', 'block');
+                });
+            } else {
+                console.log("2");
+                $("#sidebar-menu .treeview .treeview-menu").each(function () {
+                    $(this).css('display', 'none');
+                });
+            }
+
+            $("#sidebar-menu li").each(function () {
+                var li = this;
+                $(li).children("a").each(function () {
+                    var s = $.trim($(this).text().toLowerCase());
+                    if (s.indexOf(searchText) != -1) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+
+            $("#sidebar-menu .treeview-menu li").each(function () {
+                var tli = this;
+                $(tli).children("a").each(function () {
+                    var st = $.trim($(this).text().toLowerCase());
+                    if (st.indexOf(searchText) != -1) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+
+        }
+    </script>
+
 </body>
 </html>

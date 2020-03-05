@@ -20,6 +20,7 @@
                     toolbarItems.Add("Update");
                     toolbarItems.Add("Cancel");
                     toolbarItems.Add(new { text = "Refresh", tooltipText = "Refresh", id = "Refresh", prefixIcon = "e-refresh" });
+                    toolbarItems.Add("Search");
                 }
 
 
@@ -33,6 +34,7 @@
                     .ShowColumnMenu(true)
                     .AllowFiltering(true)
                     .FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); })
+                    .SearchSettings(search => { search.Fields(new string[] { "Id", "Name", "Address", "Email", "IPAddress" }).IgnoreCase(true); })
                     .AllowGrouping(true)
                     .AllowPaging()
                     .PageSettings(page => page.PageSize(5).PageSizes(true)
